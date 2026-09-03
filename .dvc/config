@@ -1,0 +1,4 @@
+[core]
+    remote = aws-s3-storage
+['remote "aws-s3-storage"']
+    url = https://utec-cdiav3-mcd8015.s3.us-east-1.amazonaws.com/data/
