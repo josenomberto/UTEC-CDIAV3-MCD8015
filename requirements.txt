@@ -19,6 +19,7 @@ jupyter>=1.0.0
 notebook>=6.5.0
 nbconvert>=7.3.0
 ipykernel>=6.22.0
+scikit-learn&gt;=1.2.0
 
 # Descarga y Gestión de Archivos desde Google Drive
 gdown>=4.7.0
