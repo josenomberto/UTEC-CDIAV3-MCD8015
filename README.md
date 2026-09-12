@@ -1,4 +1,4 @@
-# Proyecto 3 — Precio Dinámico de Alojamientos (CDMX)
+# Proyecto 3 — Sistema Inteligente de Scoring y Selección de Propiedades para Subarriendo Turístico
 
 ## Marco CRISP-DM · Etapas E1 (Comprensión del Negocio) y E2 (Comprensión de los Datos)
 
@@ -9,17 +9,17 @@
 
 ---
 
-### 👥 Integrantes y Roles
+### Integrantes y Roles
 
-* **Product Lead**: Herles Alejandro Pinedo (*Investigación de negocio, stakeholders, propuesta de valor y métricas*)
-* **Data Scientist**: David Jimenez (*EDA, perfilado de calidad, baselines, modelos y NLP*)
+* **Product Lead**: David Jimenez (*Investigación de negocio, stakeholders, propuesta de valor y métricas*)
+* **Data Scientist**: Herles Pinedo (*EDA, perfilado de calidad, baselines, modelos y NLP*)
 * **ML Engineer**: José Carlos Nomberto (*Reproducibilidad, pipeline de datos, automatización y despliegue*)
 
 **Repositorio Oficial Git**: [https://github.com/josenomberto/UTEC-CDIAV3-MCD8015](https://github.com/josenomberto/UTEC-CDIAV3-MCD8015)
 
 ---
 
-### 🚀 Instrucción Única de Ejecución (Bloque 9 — Repositorio Reproducible)
+### Instrucción Única de Ejecución (Bloque 9 — Repositorio Reproducible)
 
 Para reproducir todo el Análisis Exploratorio de Datos (EDA) y verificar la consistencia de los datos del reporte S02 de forma 100% automática, ejecute en la terminal:
 
@@ -37,7 +37,7 @@ make eda
 
 ---
 
-### 📊 Resumen de Datos Recolectados (Bloque 6)
+### Resumen de Datos Recolectados (Bloque 6)
 
 | Tabla                                              | Registros | Variables | Periodo Cubierto              | Variable Objetivo / Clave              |  Estado del Acceso  |
 | :------------------------------------------------- | :--------: | :-------: | :---------------------------- | :------------------------------------- | :------------------: |
@@ -47,7 +47,7 @@ make eda
 
 ---
 
-### 💡 Tres Hallazgos Críticos del EDA (Bloque 7)
+### Tres Hallazgos Críticos del EDA (Bloque 7)
 
 1. **Formatos de Moneda, Asimetría Positiva y Outliers Defensivos**:
 
@@ -67,7 +67,7 @@ make eda
 
 ---
 
-### 🛡️ Calidad de Datos Declarada (Bloque 8)
+### Calidad de Datos Declarada (Bloque 8)
 
 * **Faltantes**: Quantificados por variable crítica (`review_scores_rating`: 17.50%, `bedrooms`: 16.98%, `price`: 5.70%).
 * **Duplicados e Inconsistencias**: 0 duplicados en llaves primarias; 0 registros huérfanos entre tablas.
@@ -77,15 +77,15 @@ make eda
 
 ---
 
-### 🚥 Viabilidad Declarada (Bloque 10)
+### Viabilidad Declarada (Bloque 10)
 
-* **Técnica (🟢 Alta)**: Existencia de volumen de señal relacional (31k anuncios y 11.47M de noches) en formato Parquet optimizado.
-* **Financiera (🟢 Alta)**: Tarificadores comerciales cobran ~1% de facturación; el incremento de ocupación del 15% paga sobradamente la solución SaaS.
-* **Comercial (🟢 Alta)**: Cientos de miles de anfitriones en LatAm fijan tarifas a mano; mercado masivo de autoservicio web.
+* **Técnica (Alta)**: Existencia de volumen de señal relacional (31k anuncios y 11.47M de noches) en formato Parquet optimizado.
+* **Financiera (Alta)**: Tarificadores comerciales cobran ~1% de facturación; el incremento de ocupación del 15% paga sobradamente la solución SaaS.
+* **Comercial (Alta)**: Cientos de miles de anfitriones en LatAm fijan tarifas a mano; mercado masivo de autoservicio web.
 
 ---
 
-### 📁 Arquitectura del Repositorio
+### Arquitectura del Repositorio
 
 ```text
 .
