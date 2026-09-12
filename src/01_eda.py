@@ -22,7 +22,7 @@ Este script ejecuta de inicio a fin el pipeline completo de EDA:
   8. Exploración textual y lingüística de reseñas para Copiloto NLP.
   9. Auditoría dimensional de calidad de datos (Wang & Strong: Completitud MAR, Atípicos P1-P99, Sesgo).
   10. Construcción del subset comercial limpio de modelado (df_clean: 28,978 inmuebles / 92.20% retención).
-  11. Exportación dual de figuras en alta resolución (FIGURES_DIR y src/figures).
+  11. Exportación figuras en alta resolución (FIGURES_DIR ).
   12. Generación automática de artefactos de reporte:
       - conclusiones_eda.md (Informe ejecutivo exhaustivo de conclusiones y calidad)
       - reports/tabla_conclusiones.csv (Tabla de síntesis ejecutiva)
@@ -197,7 +197,6 @@ axes[2].set_ylabel("Frecuencia")
 plt.suptitle("Análisis de Distribuciones Univariadas - Formas de Histograma de Kelleher", fontsize=15, weight="bold")
 
 plt.savefig(os.path.join(FIGURES_DIR, "eda_kelleher_histograms.png"), dpi=150, bbox_inches="tight")
-plt.savefig(os.path.join("src/figures", "eda_kelleher_histograms.png"), dpi=150, bbox_inches="tight")
 plt.close()
 print("  ✓ Gráfico generado: eda_kelleher_histograms.png")
 
@@ -242,7 +241,6 @@ axes[1].set_ylim(0, 105)
 axes[1].legend(loc='lower right')
 
 plt.savefig(os.path.join(FIGURES_DIR, "eda_hallazgo1_concentracion_geografica.png"), dpi=150, bbox_inches="tight")
-plt.savefig(os.path.join("src/figures", "eda_hallazgo1_concentracion_geografica.png"), dpi=150, bbox_inches="tight")
 plt.close()
 print(f"  ✓ Hallazgo 1 validado: {top3_vol:,} anuncios ({top3_share:.2f}%) en Top 3 alcaldías")
 print("  ✓ Gráfico generado: eda_hallazgo1_concentracion_geografica.png")
@@ -286,7 +284,6 @@ axes[1].annotate(f"Inventario Fantasma:\n{n_ghost:,} anuncios ({pct_ghost:.2f}%)
                 fontsize=10, fontweight="bold", bbox=dict(boxstyle="round,pad=0.3", fc="#fce5cd", ec="black", lw=1))
 
 plt.savefig(os.path.join(FIGURES_DIR, "eda_hallazgo2_anuncios_fantasma_filtros.png"), dpi=150, bbox_inches="tight")
-plt.savefig(os.path.join("src/figures", "eda_hallazgo2_anuncios_fantasma_filtros.png"), dpi=150, bbox_inches="tight")
 plt.close()
 print(f"  ✓ Hallazgo 2 validado: {n_ghost:,} anuncios fantasma (0 días) | {n_long_stay:,} estancias > 30d | {n_extreme_stay} > 365d (máx {max_nights:.0f}d)")
 print("  ✓ Gráfico generado: eda_hallazgo2_anuncios_fantasma_filtros.png")
@@ -328,7 +325,6 @@ axes[1].annotate("+33 noches anuales\n(+45.8% demanda)", xy=(1, 105), xytext=(0.
                 fontsize=10, fontweight="bold", bbox=dict(boxstyle="round,pad=0.3", fc="#d9ead3", ec="black", lw=1))
 
 plt.savefig(os.path.join(FIGURES_DIR, "eda_hallazgo3_prima_equipamiento.png"), dpi=150, bbox_inches="tight")
-plt.savefig(os.path.join("src/figures", "eda_hallazgo3_prima_equipamiento.png"), dpi=150, bbox_inches="tight")
 plt.close()
 print("  ✓ Hallazgo 3 validado: AC (+42.1%), Balcón (+24.0%), Desk (+18.5%) -> 105 vs 72 noches/año (+45.8%)")
 print("  ✓ Gráfico generado: eda_hallazgo3_prima_equipamiento.png")
@@ -361,7 +357,6 @@ axes[1].set_ylabel("Tarifa Diaria (MXN)")
 axes[1].set_xticklabels(axes[1].get_xticklabels(), rotation=35, ha='right')
 
 plt.savefig(os.path.join(FIGURES_DIR, "eda_kelleher_boxplots.png"), dpi=150, bbox_inches="tight")
-plt.savefig(os.path.join("src/figures", "eda_kelleher_boxplots.png"), dpi=150, bbox_inches="tight")
 plt.close()
 print("  ✓ Gráfico generado: eda_kelleher_boxplots.png")
 
@@ -387,7 +382,6 @@ for n_i, (idx, row) in enumerate(ct.iterrows()):
         cum_val += val
 
 plt.savefig(os.path.join(FIGURES_DIR, "eda_kelleher_stacked_bars.png"), dpi=150, bbox_inches="tight")
-plt.savefig(os.path.join("src/figures", "eda_kelleher_stacked_bars.png"), dpi=150, bbox_inches="tight")
 plt.close()
 print("  ✓ Gráfico generado: eda_kelleher_stacked_bars.png")
 
@@ -403,7 +397,6 @@ sns.heatmap(corr_matrix, mask=mask, annot=True, cmap='vlag', fmt='.3f', vmin=-1,
 plt.title("Matriz de Correlación Lineal Triangular de Pearson", fontweight="bold")
 
 plt.savefig(os.path.join(FIGURES_DIR, "eda_kelleher_correlation_matrix.png"), dpi=150, bbox_inches="tight")
-plt.savefig(os.path.join("src/figures", "eda_kelleher_correlation_matrix.png"), dpi=150, bbox_inches="tight")
 plt.close()
 print("  ✓ Gráfico generado: eda_kelleher_correlation_matrix.png")
 
@@ -418,7 +411,6 @@ g.map_diag(sns.histplot, kde=True, color=C_TEAL)
 g.fig.suptitle("SPLOM de Variables Clave (Muestra aleatoria n=1,000)", fontweight="bold", y=1.02)
 
 g.savefig(os.path.join(FIGURES_DIR, "eda_kelleher_splom.png"), dpi=150, bbox_inches="tight")
-g.savefig(os.path.join("src/figures", "eda_kelleher_splom.png"), dpi=150, bbox_inches="tight")
 plt.close('all')
 print("  ✓ Gráfico generado: eda_kelleher_splom.png")
 
@@ -456,7 +448,6 @@ for b in bars_m:
     ax.text(w + 0.3, b.get_y() + b.get_height()/2, f"{w:.2f}%", va="center", fontweight="bold", fontsize=10)
 
 plt.savefig(os.path.join(FIGURES_DIR, "eda_bloque8_completitud_faltantes.png"), dpi=150, bbox_inches="tight")
-plt.savefig(os.path.join("src/figures", "eda_bloque8_completitud_faltantes.png"), dpi=150, bbox_inches="tight")
 plt.close()
 print("  ✓ Gráfico generado: eda_bloque8_completitud_faltantes.png")
 
@@ -496,7 +487,6 @@ axes[1].set_xlabel("Tarifa Diaria (Escala Log)")
 axes[1].legend()
 
 plt.savefig(os.path.join(FIGURES_DIR, "eda_bloque8_deteccion_outliers.png"), dpi=150, bbox_inches="tight")
-plt.savefig(os.path.join("src/figures", "eda_bloque8_deteccion_outliers.png"), dpi=150, bbox_inches="tight")
 plt.close()
 print(f"  ✓ Auditoría de atípicos: Extremos crudos ${p_min:.2f} - ${p_max:,.2f} | Corte P1-P99: ${p01_v:.2f} - ${p99_v:.2f}")
 print("  ✓ Gráfico generado: eda_bloque8_deteccion_outliers.png")
@@ -520,7 +510,6 @@ axes[1].pie(room_shares.values, labels=room_shares.index, autopct='%1.1f%%', sta
 axes[1].set_title(f"B. Sesgo Tipológico: Predominio de Departamentos Enteros\n({room_shares['Entire home/apt']:.1f}% Entire home/apt)", fontweight="bold")
 
 plt.savefig(os.path.join(FIGURES_DIR, "eda_bloque8_sesgo_representatividad.png"), dpi=150, bbox_inches="tight")
-plt.savefig(os.path.join("src/figures", "eda_bloque8_sesgo_representatividad.png"), dpi=150, bbox_inches="tight")
 plt.close()
 print(f"  ✓ Sesgo evaluado: 72.99% en Top 3 alcaldías | {room_shares['Entire home/apt']:.2f}% Entire home/apt")
 print("  ✓ Gráfico generado: eda_bloque8_sesgo_representatividad.png")
@@ -768,7 +757,7 @@ df_clean = df_listings[clean_filter].copy()
 """
 
 
-path_conclusiones_md = os.path.join("src","conclusiones_eda.md")
+path_conclusiones_md = os.path.join(REPORTS_DIR, "conclusiones_eda.md")
 with open(path_conclusiones_md, "w", encoding="utf-8") as f:
     f.write(md_content)
 print(f"  ✓ Informe exhaustivo de conclusiones: {path_conclusiones_md}")
