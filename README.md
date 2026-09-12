@@ -94,9 +94,8 @@ make eda
 ├── requirements.txt             # Dependencias estrictas del entorno
 ├── data/
 │   └── raw/                     # Datasets descargados (.parquet)
-├── notebooks/
-│   └── 01_eda.ipynb             # Notebook ejecutable con auditoría completa
 └── src/
     ├── 01_eda.py                # Script ejecutable del EDA
+│   └── 01_eda.ipynb             # Notebook ejecutable con auditoría completa  
     └── figures/                 # Gráficos vectoriales generados por el EDA
 ```
