@@ -15,6 +15,7 @@ import os
 import sys
 import shutil
 import argparse
+import subprocess
 
 # Intentar importar gdown para descargas remotas
 #try:
@@ -55,7 +56,7 @@ def setup_data_dir():
 def verify_files():
     """Verifica la existencia y tamaño de los archivos parquet en data/raw."""
     missing = []
-    print("\n🔍 Verificando archivos en data/raw/:")
+    print("\n Verificando archivos en data/raw/:")
     for f in FILES:
         path = os.path.join(DATA_DIR, f)
         if os.path.exists(path) and os.path.getsize(path) > 0:
@@ -69,7 +70,7 @@ def verify_files():
 
 def download_from_s3(s3_uri):
     """Descarga los archivos desde un bucket de AWS S3 usando aws-cli o boto3."""
-    print(f"\n☁️ Intentando descargar datos desde AWS S3: '{s3_uri}'")
+    print(f"\n Intentando descargar datos desde AWS S3: '{s3_uri}'")
     
     # 1. Intentar con AWS CLI (aws s3 cp / sync)
     try:
@@ -172,7 +173,7 @@ def main():
         print("\n Datos descargados exitosamente desde AWS S3.")
         sys.exit(0)
 
-    print("\n No se pudieron obtener los archivos automáticamente.")
+    print("\n⚠️ No se pudieron obtener los archivos automáticamente.")
     print("Coloca los archivos parquet en 'data/raw/' o especifica el URI exacto de AWS S3 ejecutando: python download_data.py --s3-uri s3://tu-bucket/carpeta/")
 
 
