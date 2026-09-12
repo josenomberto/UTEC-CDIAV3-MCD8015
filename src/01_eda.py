@@ -86,12 +86,10 @@ def resolve_data_dir():
     raise FileNotFoundError("ERROR: No se encontró el dataset con airbnb_listings.parquet en las rutas habituales.")
 
 DATA_DIR = resolve_data_dir()
-FIGURES_DIR = os.environ.get("FIGURES_DIR", "figures")
-SRC_FIGURES_DIR = "src/figures"
+FIGURES_DIR = "figures"
 REPORTS_DIR = "reports"
 
 os.makedirs(FIGURES_DIR, exist_ok=True)
-os.makedirs(SRC_FIGURES_DIR, exist_ok=True)
 os.makedirs(REPORTS_DIR, exist_ok=True)
 
 print("=" * 80)
@@ -100,7 +98,6 @@ print("EJECUCIÓN DEL PIPELINE DE ANÁLISIS EXPLORATORIO DE DATOS (EDA)")
 print("=" * 80)
 print(f"• Directorio de datos origen : {DATA_DIR}")
 print(f"• Directorio de figuras (1)  : {os.path.abspath(FIGURES_DIR)}")
-print(f"• Directorio de figuras (2)  : {os.path.abspath(SRC_FIGURES_DIR)}")
 print(f"• Directorio de reportes     : {os.path.abspath(REPORTS_DIR)}")
 print("-" * 80)
 
