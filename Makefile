@@ -33,7 +33,7 @@ download_data: setup
 # 3. COMANDO ÚNICO DE EJECUCIÓN (Exigido en el Bloque 9 del One-Pager)
 eda: download_data
 	@echo "====== [3/3] Ejecutando EDA avanzado con estándares de Kelleher ======"
-	$(PYTHON) 01_eda.py
+	$(PYTHON) src/01_eda.py
 	@echo "====== [¡ÉXITO!] ======"
 	@echo "El EDA reproducible ha corrido de punta a punta."
 	@echo "Las cifras y gráficos generados coinciden con el One-Pager y el Informe S02."
