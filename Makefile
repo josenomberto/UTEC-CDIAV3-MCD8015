@@ -7,6 +7,9 @@ PYTHON = venv/bin/python
 PIP = venv/bin/pip
 DATA_DIR = data/raw
 
+# URI por defecto de AWS S3 (se puede sobrescribir en terminal: make eda S3_URI=s3://tu-bucket/carpeta/)
+S3_URI ?= s3://utec-cdiav3-mcd8015/data/raw/
+
 .PHONY: all setup download_data eda clean help
 
 # Target por defecto
@@ -22,9 +25,9 @@ setup: requirements.txt
 
 # 2. Copia o Descarga de los Datasets Parquet desde Google Drive
 download_data: setup
-	@echo "====== [2/3] Verificando / Copiando Datasets Parquet desde Google Drive ======"
+	@echo "====== [2/3] Verificando / Descargando Datasets Parquet desde AWS S3 ======"
 	mkdir -p $(DATA_DIR)
-	$(PYTHON) src/download_data.py
+	$(PYTHON) src/download_data.py --s3-uri $(S3_URI)
 	@echo "Verificación de archivos completada."
 
 # 3. COMANDO ÚNICO DE EJECUCIÓN (Exigido en el Bloque 9 del One-Pager)
